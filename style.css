@@ -1,0 +1,164 @@
+/*
+Theme Name: Basic Theme
+Theme URI: http://www.atypical-studio.com
+Description: Tema Base
+Version: 1.0
+Author: Atypical Studio
+Author URI: http://www.atypical-studio.com
+*/
+
+@import "css/normalize.css";
+@import "css/helpers.css";
+
+body{
+	
+}
+
+#wrapper{
+	max-width: 1200px;
+	margin:auto;
+}
+
+a{ color:red; text-decoration:none; }
+a:hover{ color:red; text-decoration:underline; }
+
+.title{}
+
+
+
+/* MEDIA QUERIES */
+
+/*----------------------------------
+           LARGE SCREENS
+------------------------------------*/
+
+@media only screen 
+and (min-width : 1200px) {
+
+}
+
+/*----------------------------------
+              TABLETS
+------------------------------------*/
+
+@media only screen 
+and (max-width : 1024px) {
+/* Styles */
+
+}
+
+@media only screen 
+and (max-width : 768px) {
+/* Styles */
+
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-width : 768px)
+and (max-width : 1024px)
+and (orientation : portrait) {
+/* Styles */
+	
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1024px) 
+and (orientation : landscape) {
+/* Styles */
+
+}
+/*----------------------------------
+                PHONE
+------------------------------------*/
+
+/* Samsung Galaxy S3 and smaller----------- */
+@media only screen 
+and (max-width : 685px) {
+/* Styles */
+
+}
+
+/* Samsung Galaxy S3 (landscape) ----------- */
+@media only screen 
+and (max-width : 685px)
+and (orientation : landscape){
+/* Styles */
+
+}
+
+/* Iphone 5 and smaller ----------- */
+@media only screen 
+and (max-width : 568px) {
+/* Styles */
+
+}
+
+/* Iphone 4s and smaller ----------- */
+@media only screen 
+and (max-width : 480px) {
+/* Styles */
+	
+}
+
+/* Samsung Galaxy S3 ----------- */
+@media only screen 
+and (max-width : 380px) {
+/* Styles */
+	
+}
+
+
+/* Iphone 4s and smaller ----------- */
+@media only screen 
+and (max-width : 320px) {
+/* Styles */
+	
+}
+
+
+/* Iphone 5 (portrait) ----------- */
+@media only screen 
+and (min-width : 320px) 
+and (max-width : 568px)
+and (orientation : portrait) {
+/* Styles */
+
+}
+/* Iphone 5 (landscape) ----------- */
+@media only screen 
+and (min-width : 320px) 
+and (max-width : 568px)
+and (orientation : landscape) {
+/* Styles */
+
+}
+
+/* Iphone 4s (portrait) ----------- */
+@media only screen 
+and (min-width : 320px) 
+and (max-width : 480px)
+and (orientation : portrait) {
+/* Styles */
+
+}
+
+/* Iphone 4s (landscape) ----------- */
+@media only screen 
+and (min-width : 320px) 
+and (max-width : 480px)
+and (orientation : landscape) {
+/* Styles */
+
+}
+
+/* Retina Display ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+}
+
+
