@@ -5,6 +5,7 @@
  */
 
 get_header(); ?>
+<section class="span12">
 
 				<h1><?php
 					printf( __( 'Tag Archives: %s', 'twentyten' ), '' . single_tag_title( '', false ) . '' );
@@ -17,6 +18,6 @@ get_header(); ?>
  */
  get_template_part( 'loop', 'tag' );
 ?>
-
+</section>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

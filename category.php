@@ -5,7 +5,7 @@
  */
 
 get_header(); ?>
-<section class="span8 green">
+<section class="span12">
 
 				<h1><?php
 					printf( __( 'Category Archives: %s', 'twentyten' ), '' . single_cat_title( '', false ) . '' );

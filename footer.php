@@ -1,15 +1,15 @@
+<?php
+/**
+ * The template for displaying the footer.
+ */
+?>
 	</div><!-- #content -->
-	<footer class="">
-		Lorem ipsum sit amet
-
+	<footer class="row clearfix font-s">
+		<p><?php bloginfo( 'name' ); ?> & Wordpress Basic Theme by Atypical Studio | <a href="http://www.atypical-studio.com" target="_blank">www.atypical-studio.com</a></p>
 	</footer>
 
 		<?php wp_footer(); ?>
 
-
 </div><!-- #wrapper -->
-
-	<script src="<?php bloginfo('template_directory'); ?>/js/bootstrap.min.js"></script>
-	<script src="<?php bloginfo('template_directory'); ?>/js/my.scripts.js"></script>
 </body>
 </html>

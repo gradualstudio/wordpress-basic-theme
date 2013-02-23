@@ -5,52 +5,61 @@
 
 
 /* Typography */
-.font_s{ font-size:0.85em; }
-.font_m{ font-size:1em; }
-.font_l{ font-size:1.2em; }
-.font_xl{ font-size:1.6em; }
-.font_xxl{ font-size:2.3em; }
+.font-s{ font-size:0.85em; }
+.font-m{ font-size:1em; }
+.font-l{ font-size:1.2em; }
+.font-xl{ font-size:1.6em; }
+.font-xxl{ font-size:2.3em; }
+
+
+/* Lists */
+.h-list li{
+	display:inline-block;
+}
+.v-list li{
+	display:block;
+}
 
 /* Aligns */
-.align_left{
+.alignleft{
 	float:left;
 }
-.align_right{
+.alignright{
 	float:right;
 }
 
-/* ClearFix */
-.clearfix:after {
-	content: ".";
-	display: block;
-	clear: both;
-	visibility: hidden;
-	line-height: 0;
-	height: 0;
-}
- 
-.clearfix {
-	display: inline-block;
-}
- 
-html[xmlns] .clearfix {
-	display: block;
-}
- 
-* html .clearfix {
-	height: 1%;
+/* Box Shadow */
+.box-shadow{
+	-webkit-box-shadow: -1px 0px 8px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    -1px 0px 8px rgba(50, 50, 50, 0.75);
+	box-shadow:         -1px 0px 8px rgba(50, 50, 50, 0.75);
 }
 
+/* Text Shadow */
+.text-shadow{
+	-webkit-text-shadow: 1px 1px 0px #333;
+	-moz-text-shadow: 1px 1px 0px #333;
+	text-shadow: 1px 1px 0px #333;
+	filter: dropshadow(color=#333, offx=1, offy=1);
+}
 
-/*COLOR TEST*/
-.grey{background-color:#ccc;}
-.red{background-color:#de6060;}
-.blue{background-color:#4f79c8;}
-.green{background-color:#72b96c;}
+/* Border Radius */
+.border-radius{
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
 
-/*GRID*/
+/*Color Test*/
+.black{ background-color:#333; }
+.grey{ background-color:#ccc; }
+.red{ background-color:#de6060; }
+.blue{ background-color:#4f79c8; }
+.green{ background-color:#72b96c; }
 
-.row:after {clear: both;}
+/*Grid*/
+
+.row {clear: both; width: 100%;}
 
 .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12, .span13, .span14, .span15, .span16{
 	float:left;
@@ -90,5 +99,18 @@ html[xmlns] .clearfix {
 .offset14{margin-left:87.5%}
 .offset15{margin-left:93.75%}
 .offset16{margin-left:100%}
+
+
+/* Samsung Galaxy S3 and smaller----------- */
+@media only screen 
+and (max-width : 685px) {
+/* Styles */
+	.span1, .span2, .span3, .span4, .span5, .span6{
+	float:none;
+	width:100%;
+	}
+	.offset1, .offset2, .offset3, .offset4, .offset5, .offset6, .offset7, .offset8, .offset9, .offset10, .offset11, .offset12, .offset13, .offset14, .offset15, .offset16{ margin-left:0}
+
+}
 
 

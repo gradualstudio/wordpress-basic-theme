@@ -1,7 +1,7 @@
 /*
 Theme Name: Basic Theme
 Theme URI: http://www.atypical-studio.com
-Description: Tema Base
+Description: Tema Base para Wordpress.
 Version: 1.0
 Author: Atypical Studio
 Author URI: http://www.atypical-studio.com
@@ -10,20 +10,19 @@ Author URI: http://www.atypical-studio.com
 @import "css/normalize.css";
 @import "css/helpers.css";
 
-body{
-	
-}
+body{}
 
-#wrapper{
-	max-width: 1200px;
-	margin:auto;
-}
+#wrapper{ max-width: 1200px; margin:auto; }
 
-a{ color:red; text-decoration:none; }
-a:hover{ color:red; text-decoration:underline; }
+a{ color:gray; text-decoration:none; }
+a:hover{ color:black; text-decoration:underline; }
 
-.title{}
+.title{color:gray;}
 
+#logo a{ background-image: url(img/my_logo.png); display:block; height: 100px; text-indent: -9999px; width:150px;  }
+
+#wrapper-slider{height:500px; position:relative;}
+#caption{position:absolute; bottom:0; z-index: 99; color:#fff;}
 
 
 /* MEDIA QUERIES */

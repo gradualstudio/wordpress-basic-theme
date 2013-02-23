@@ -10,13 +10,16 @@
 
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 
-<link rel="shortcut icon" type="image/png" href="<?php bloginfo('template_directory'); ?>/favicon.jpg" />
+<link rel="shortcut icon" type="image/png" href="<?php bloginfo('template_directory'); ?>/favicon.png" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/js/bootstrap.min.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/js/jquery.cycle.all.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/js/my.scripts.js"></script>
 
 <!--[if IE]>
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_directory'); ?>/css/ie.css" />
+			<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_directory'); ?>/css/ie.css" />
 <![endif]-->
 <!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -35,29 +38,19 @@
 
     <div id="wrapper">
     
-    <header class="grey row">
+    <header class="row clearfix">
      
      	<div id="logo" class="span3">
 			<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 		</div>
 
 		
-		<nav id="access" role="navigation" class="span13 h_list">
-			  	 <?php /*  MENU
-		Menu de navegación creado a partir de un elemento de menu. wp_nav_menu inserta un menu personalizado  */ ?>
+		<nav id="access" role="navigation" class="span13 h-list">
+		<?php /*  Main Menu  */ ?>
 		<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
         
-           <?php /* Menu de navegación secundario creado a partir de un elemento de menu.
-        wp_nav_menu( array( 'menu' => 'Nombre de Menu que mostrar', 'container_class' => 'Class del contenedor', 'theme_location' => 'secondary' ) ); */?>
-        
-        
-          <?php /* Condicionales para usuarios con o sin login
-		if ( is_user_logged_in() ) {
-			 wp_nav_menu( array( 'theme_location' => 'logged-in-menu' ) );
-		} else {
-			 wp_nav_menu( array( 'theme_location' => 'logged-out-menu' ) ); 
-	    }*/ ?>
 		</nav><!-- #access -->
+		<?php wbt_breadcrumb(); ?>
 	</header>
 	
-	<div id="content">
+	<div id="content" class="row clearfix">

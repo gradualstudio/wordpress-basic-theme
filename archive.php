@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<section class="green">
+<section class="span12">
 
 <?php
 	/* Queue the first post, that way we know
@@ -14,13 +14,15 @@
 
 			<h1>
 <?php if ( is_day() ) : ?>
-				<?php printf( __( 'Daily Archives: %s', 'twentyten' ), get_the_date() ); ?>
+				<?php printf( __( 'Daily Archives: %s', 'wbt' ), get_the_date() ); ?>
 <?php elseif ( is_month() ) : ?>
-				<?php printf( __( 'Monthly Archives: %s', 'twentyten' ), get_the_date('F Y') ); ?>
+				<?php printf( __( 'Monthly Archives: %s', 'wbt' ), get_the_date('F Y') ); ?>
 <?php elseif ( is_year() ) : ?>
-				<?php printf( __( 'Yearly Archives: %s', 'twentyten' ), get_the_date('Y') ); ?>
+				<?php printf( __( 'Yearly Archives: %s', 'wbt' ), get_the_date('Y') ); ?>				
+<?php elseif ( is_author() ) : ?>
+				<?php printf( __( 'Author Archives: %s', 'wbt' ) ); ?>
 <?php else : ?>
-				<?php _e( 'Blog Archives', 'twentyten' ); ?>
+				<?php _e( 'Blog Archives', 'wbt' ); ?>
 <?php endif; ?>
 			</h1>
 

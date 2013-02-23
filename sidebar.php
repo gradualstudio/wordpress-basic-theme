@@ -1,24 +1,14 @@
-<aside id="sidebar" class="span4 blue">
+<aside id="sidebar" class="span4">
 
 <?php
-	// A second sidebar for widgets, just because.
-	if ( is_active_sidebar( 'primary-widget-area' ) ) : ?>
+	// Widget Area.
+	if ( is_active_sidebar( 'widget-area' ) ) : ?>
 
-			<ul class="primary-widget-area">
-				<?php dynamic_sidebar( 'primary-widget-area' ); ?>
+			<ul class="widget-area">
+				<?php dynamic_sidebar( 'widget-area' ); ?>
 			</ul>
 
 <?php endif; ?>
 			
-
-<?php
-	// A second sidebar for widgets, just because.
-	if ( is_active_sidebar( 'secondary-widget-area' ) ) : ?>
-
-			<ul class="secondary-widget-area">
-				<?php dynamic_sidebar( 'secondary-widget-area' ); ?>
-			</ul>
-
-<?php endif; ?>
 
 </aside> <!-- aside -->
