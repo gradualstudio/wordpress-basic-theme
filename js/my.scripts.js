@@ -2,6 +2,9 @@
 
 $(document).ready(function(){
 
+
+	// Slider Home - Jquery Cycle / http://jquery.malsup.com/cycle/
+
     $('#slider-home').cycle({ 
     fx:			'fade', 
     speed:		1000 ,
@@ -19,10 +22,25 @@ $(document).ready(function(){
 	    }
     });
     
-   function slideAfter() {
+   function slideAfter() { // caption function
    	$('#caption').html(this.alt).slideDown();
    }
 
+   // Responsive Slider
+   function resizeslider() {
+   var $slideHeight = $('#slider-home img').height();
+   $('#wrapper-slider').css('height', $slideHeight);
+   }
+   
+   resizeslider();
+   
+   $(window).resize( function(){
+   resizeslider();
+   });
+   
+   
+   // Custom Javascript
+   
 });
 
 

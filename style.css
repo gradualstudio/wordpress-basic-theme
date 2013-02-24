@@ -21,7 +21,7 @@ a:hover{ color:black; text-decoration:underline; }
 
 #logo a{ background-image: url(img/my_logo.png); display:block; height: 100px; text-indent: -9999px; width:150px;  }
 
-#wrapper-slider{height:500px; position:relative;}
+#wrapper-slider{position:relative;}
 #caption{position:absolute; bottom:0; z-index: 99; color:#fff;}
 
 
