@@ -2,6 +2,25 @@
 /*
  * Functions.
  */
+ 
+ 
+
+ add_action( 'after_setup_theme', 'wbt_setup' );
+function wbt_setup() {
+
+		/* Add theme support for automatic feed links. */
+	add_theme_support( 'automatic-feed-links' );
+
+		// This theme uses wp_nav_menu() in one location.
+	register_nav_menu( 'primary', __( 'Primary Menu', 'wbt' ) );
+	
+		// This theme styles the visual editor with editor-style.css to match the theme style.
+	add_editor_style();
+	
+		// This theme uses Featured Images (also known as post thumbnails) for per-post/per-page Custom Header images
+	add_theme_support( 'post-thumbnails' );
+}
+
 function wbt_filter_wp_title( $title, $separator ) {
 	// Don't affect wp_title() calls in feeds.
 	if ( is_feed() )
