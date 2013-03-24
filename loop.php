@@ -14,7 +14,7 @@
 	 
 <?php while ( have_posts() ) : the_post(); ?>
 
-<article class="row">
+<article class="clearfix">
 
 		<h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 

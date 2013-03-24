@@ -125,7 +125,7 @@ function wbt_comment( $comment, $args, $depth ) {
 	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 		<article id="comment-<?php comment_ID(); ?>" class="comment">
 			<footer class="comment-meta">
-				<div class="comment-author vcard">
+				<div class="comment-author vcardo">
 					<?php
 						$avatar_size = 68;
 						if ( '0' != $comment->comment_parent )
@@ -168,6 +168,38 @@ function wbt_comment( $comment, $args, $depth ) {
 }
 endif; // ends check for wbt_comment()
 
+
+/**
+ * Custom comment fields.
+ *
+ *
+function wbt_comment_fields($fields)
+{
+  global $post;
+// remove fields
+	$fields['author'] = '';
+// custom fields
+    $fields['firstname'] = '' . '<label for="firstname">' . __( 'First Name' ) . '</label> ' .
+      '<input id="firstname" name="firstname" type="text" value="' . esc_attr( $commenter['firstname'] ) . '" size="30" /><span class="required">*</span>';
+	$fields['lastname'] = '' . '<label for="lastname">' . __( 'Last Name' ) . '</label> ' .
+      '<input id="lastname" name="lastname" type="text" value="' . esc_attr( $commenter['lastname'] ) . '" size="30" /><span class="required">*</span>';
+
+
+    $fields = array( $fields['author'], $fields['email'], $fields['url'], $fields['firstname'], $fields['lastname'] );
+  return $fields;
+}
+
+add_filter( 'comment_form_default_fields', 'wbt_comment_fields' );
+
+
+add_action ('comment_post', 'add_meta_settings', 1);
+function add_meta_settings($comment_id) {
+	add_comment_meta($comment_id, 'firstname', $_POST['firstname'], true);
+	add_comment_meta($comment_id, 'lastname', $_POST['lastname'], true);
+}
+*/
+
+
 if ( ! function_exists( 'wbt_posted_on' ) ) :
 /*
  * Prints HTML with meta information for the current post—date/time and author.
@@ -200,12 +232,16 @@ remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
  */
 
 function wbt_breadcrumb() {
-
-    if ( is_single() ) {
+	
+    if ( is_single() || is_page() ) {
         
-        echo '<div class="breadcrumb"><a href="#">Breadcrumb</a> / <b> ';
+        echo '<ul class="breadcrumb span16"><li><a href="'; 
+        bloginfo('url');
+        echo '">';
+        bloginfo('name');
+        echo '</a><span class="divider">/</span></li><li class="active"> ';
         the_title();
-        echo '</b></div>';
+        echo '</li></ul>';
         
     }
 }    

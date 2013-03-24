@@ -23,7 +23,7 @@ $(document).ready(function(){
     });
     
    function slideAfter() { // caption function
-   	$('#caption').html(this.alt).slideDown();
+   	$('#caption').html('<div class="gut">' + this.alt + '</div>').slideDown();
    }
 
    // Responsive Slider
@@ -32,7 +32,14 @@ $(document).ready(function(){
    $('#wrapper-slider').css('height', $slideHeight);
    }
    
+   // Responsive Switch
+    $('.close-menu').click(function() {
+	    $('.menu').slideToggle('fast', function() {});
+	    $(this).find('span').toggleClass('icon-chevron-down').toggleClass('icon-chevron-up');
+	});
+   
    resizeslider();
+   
    
    $(window).resize( function(){
    resizeslider();
@@ -41,7 +48,8 @@ $(document).ready(function(){
    
    // Custom Javascript
    
-});
+   
+});//
 
 
 
