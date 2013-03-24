@@ -8,10 +8,11 @@ A fully integrated wordpress basic theme with bootstrap, js libraries and person
 FEATURES
 
 - 16 Columns Responsive Grid System - Too Easy
+- Slice Up/Down Mobile Menu
 - Twitter Bootstrap
 - Jquery Cycle Slider Support
 - Custom Responsive Jquery Functions
-- Any More...
+- Simple Breadcrumbs
 
 
 

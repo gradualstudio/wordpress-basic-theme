@@ -59,4 +59,4 @@
 		<?php wbt_breadcrumb(); ?>
 	</header>
 	
-	<div id="content" class="rclearfix">
+	<div id="content" class="clearfix">

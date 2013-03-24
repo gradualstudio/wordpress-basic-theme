@@ -235,7 +235,7 @@ function wbt_breadcrumb() {
 	
     if ( is_single() || is_page() ) {
         
-        echo '<ul class="breadcrumb span16"><li><a href="'; 
+        echo '<ul class="breadcrumb clearfix"><li><a href="'; 
         bloginfo('url');
         echo '">';
         bloginfo('name');

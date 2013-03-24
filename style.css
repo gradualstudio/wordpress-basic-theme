@@ -25,6 +25,11 @@ Author URI: http://www.atypical-studio.com
 	display:inline-block;
 }
 
+/* Clearfix */
+
+.clearfix{
+	clear:both;
+}
 
 /* Aligns */
 .alignleft{
@@ -103,7 +108,7 @@ Author URI: http://www.atypical-studio.com
 .offset14{margin-left:87.5%}
 .offset15{margin-left:93.75%}
 
-.gut{padding:5px;} /*Default: 5px*/
+.gut{padding:5px;} /*Gutter Default: 5px*/
 
 /* --------------------------------------
    BASIC CONFIGURATION
@@ -134,7 +139,6 @@ and (min-width : 685px) {
 	.menu{display:block !important;}
 }
 
-/* Samsung Galaxy S3 and smaller----------- */
 @media only screen 
 and (max-width : 685px) {
 /* Styles */
@@ -143,10 +147,11 @@ and (max-width : 685px) {
 	width:100%;
 	}
 	.offset1, .offset2, .offset3, .offset4, .offset5, .offset6, .offset7, .offset8, .offset9, .offset10, .offset11, .offset12, .offset13, .offset14, .offset15{ margin-left:0}
-	.menu{display:none;}
-	.menu li{display:block;}
-	.close-menu{display:block;}
-}
+	.menu, #wrapper-slider, .slider-controls{display:none;}
+	.menu li, .close-menu{display:block;}
+	}
+
+
 
 
 

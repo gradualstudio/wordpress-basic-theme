@@ -12,11 +12,11 @@ get_header(); ?>
        	<img class="slide s2" src="<?php bloginfo('template_directory'); ?>/img/slider/slide_2.jpg" alt="Slide2" />
     </div>
 </div>
-
-<div class="controlNav pagination"></div>
-
-<div class="prev btn">Prev</div>
-<div class="next btn">Next</div>
+<div class="slider-controls">
+    <div class="controlNav pagination"></div>
+    <div class="prev btn">Prev</div>
+    <div class="next btn">Next</div>
+</div>
 
 
 
