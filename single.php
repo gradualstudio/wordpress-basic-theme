@@ -19,7 +19,7 @@ get_header(); ?>
 						<?php wp_link_pages( array( 'before' => '' . __( 'Pages:', 'twentyten' ), 'after' => '' ) ); ?>
 
 <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
-							<?php echo get_avatar( get_the_author_meta( 'user_email' ) ?>
+							
 							<h2><?php printf( esc_attr__( 'About %s', 'wbt' ), get_the_author() ); ?></h2>
 							<?php the_author_meta( 'description' ); ?>
 							<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">

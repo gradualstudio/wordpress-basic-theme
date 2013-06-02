@@ -13,6 +13,7 @@ function wbt_setup() {
 
 		// This theme uses wp_nav_menu() in one location.
 	register_nav_menu( 'primary', __( 'Primary Menu', 'wbt' ) );
+
 	
 		// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
@@ -76,6 +77,36 @@ function wbt_excerpt_length( $length ) {
 	return 40;
 }
 add_filter( 'excerpt_length', 'wbt_excerpt_length' );
+
+/*
+ * Sets special limit to content() and excerpt(). Example: content(20); select 20 words to display.
+ */
+
+function excerpt($limit) {
+      $excerpt = explode(' ', get_the_excerpt(), $limit);
+      if (count($excerpt)>=$limit) {
+        array_pop($excerpt);
+        $excerpt = implode(" ",$excerpt).'...';
+      } else {
+        $excerpt = implode(" ",$excerpt);
+      } 
+      $excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
+      return $excerpt;
+    }
+
+function content($limit) {
+      $content = explode(' ', get_the_content(), $limit);
+      if (count($content)>=$limit) {
+        array_pop($content);
+        $content = implode(" ",$content).'...';
+      } else {
+        $content = implode(" ",$content);
+      } 
+      $content = preg_replace('/\[.+\]/','', $content);
+      $content = apply_filters('the_content', $content); 
+      $content = str_replace(']]>', ']]&gt;', $content);
+      return $content;
+    }
 
 /*
  * Register widgetized areas, including two sidebars and four widget-ready columns in the footer.
@@ -169,37 +200,6 @@ function wbt_comment( $comment, $args, $depth ) {
 endif; // ends check for wbt_comment()
 
 
-/**
- * Custom comment fields.
- *
- *
-function wbt_comment_fields($fields)
-{
-  global $post;
-// remove fields
-	$fields['author'] = '';
-// custom fields
-    $fields['firstname'] = '' . '<label for="firstname">' . __( 'First Name' ) . '</label> ' .
-      '<input id="firstname" name="firstname" type="text" value="' . esc_attr( $commenter['firstname'] ) . '" size="30" /><span class="required">*</span>';
-	$fields['lastname'] = '' . '<label for="lastname">' . __( 'Last Name' ) . '</label> ' .
-      '<input id="lastname" name="lastname" type="text" value="' . esc_attr( $commenter['lastname'] ) . '" size="30" /><span class="required">*</span>';
-
-
-    $fields = array( $fields['author'], $fields['email'], $fields['url'], $fields['firstname'], $fields['lastname'] );
-  return $fields;
-}
-
-add_filter( 'comment_form_default_fields', 'wbt_comment_fields' );
-
-
-add_action ('comment_post', 'add_meta_settings', 1);
-function add_meta_settings($comment_id) {
-	add_comment_meta($comment_id, 'firstname', $_POST['firstname'], true);
-	add_comment_meta($comment_id, 'lastname', $_POST['lastname'], true);
-}
-*/
-
-
 if ( ! function_exists( 'wbt_posted_on' ) ) :
 /*
  * Prints HTML with meta information for the current post—date/time and author.
@@ -227,15 +227,30 @@ remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
 remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
 remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
 
+
+
+
+function wbt_content_nav( $html_id ) {
+	global $wp_query;
+
+	$html_id = esc_attr( $html_id );
+
+	if ( $wp_query->max_num_pages > 1 ) : ?>
+		<nav id="<?php echo $html_id; ?>" class="navigation" role="navigation">
+			<h3 class="assistive-text"><?php _e( 'Post navigation', 'twentytwelve' ); ?></h3>
+			<div class="nav-previous alignleft"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'twentytwelve' ) ); ?></div>
+			<div class="nav-next alignright"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?></div>
+		</nav><!-- #<?php echo $html_id; ?> .navigation -->
+	<?php endif;
+}
+
 /*
  * Breadcrumb.
  */
 
 function wbt_breadcrumb() {
 	
-    if ( is_single() || is_page() ) {
-        
-        echo '<ul class="breadcrumb clearfix"><li><a href="'; 
+        echo '<ul class="breadcrumb clearfix clear"><li><a href="'; 
         bloginfo('url');
         echo '">';
         bloginfo('name');
@@ -243,5 +258,4 @@ function wbt_breadcrumb() {
         the_title();
         echo '</li></ul>';
         
-    }
 }    

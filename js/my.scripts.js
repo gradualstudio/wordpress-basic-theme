@@ -1,7 +1,24 @@
-/*MY SCRIPTS*/
+/* MY SCRIPTS */
 
 $(document).ready(function(){
 
+	var $window = $(window);
+	var $windowWidth = $window.width();
+   
+   
+   
+   // Superfish https://github.com/joeldbirch/superfish
+   if (($windowWidth) > 685){
+   
+   jQuery('ul.sf-menu').superfish({
+			delay:       500,                            // one second delay on mouseout
+			animation:   {opacity:'show',height:'show'},  // fade-in and slide-down animation
+			speed:       'fast',                          // faster animation speed
+			autoArrows:  false                            // disable generation of arrow mark-up
+		});
+	}
+		
+		
 
 	// Slider Home - Jquery Cycle / http://jquery.malsup.com/cycle/
 
@@ -11,39 +28,38 @@ $(document).ready(function(){
     pager:		'.controlNav',
     next:		'.next',
     prev:		'.prev',
-    width:		'100%',
+    width:      '100%',
+    height:     'auto',
     fit:		1, // default: 0 - force slides to fit container
     containerResize: 0, // default: 1 - resize container to fit largest slide 
     nowrap:		0, // default: 0 - true to prevent slideshow from wrapping
-    height:     'auto',
-    after: slideAfter,
-    before: function() { // caption function
-	    $('#caption').slideUp();
-	    }
+    after: showContent,
+    before: hideContent
     });
     
-   function slideAfter() { // caption function
-   	$('#caption').html('<div class="gut">' + this.alt + '</div>').slideDown();
-   }
-
-   // Responsive Slider
-   function resizeslider() {
-   var $slideHeight = $('#slider-home img').height();
-   $('#wrapper-slider').css('height', $slideHeight);
-   }
+    function hideContent() { 
+	    $('#slider-home .content').animate({
+	    	opacity: 0,
+	    	bottom: '-=110'
+		    }, 500);
+    }
+    
+    function showContent() { 
+	    $('#slider-home .content')
+	    .animate({
+		    opacity: 1,
+		    bottom: '+=110'
+		    }, 500, function() {
+			  
+		});
+    }
+   
    
    // Responsive Switch
-    $('.close-menu').click(function() {
-	    $('.menu').slideToggle('fast', function() {});
+   $('.close-menu').click(function() {
+	    $('.primary-menu').slideToggle('fast');
 	    $(this).find('span').toggleClass('icon-chevron-down').toggleClass('icon-chevron-up');
 	});
-   
-   resizeslider();
-   
-   
-   $(window).resize( function(){
-   resizeslider();
-   });
    
    
    // Custom Javascript

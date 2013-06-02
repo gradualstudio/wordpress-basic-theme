@@ -5,10 +5,10 @@ Theme Name: Basic Theme
 Used to style the TinyMCE editor.
 */
 html .mceContentBody {
-	max-width:640px;
+	max-width:100%;
 }
 * {
-	font-family: Georgia, "Bitstream Charter", serif;
+	font-family: Arial, sans-serif;
 	color: #444;
 	line-height: 1.5;
 }

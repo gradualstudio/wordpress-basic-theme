@@ -17,10 +17,9 @@
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/custom.css" />
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="<?php bloginfo('template_directory'); ?>/js/jquery-1.5.1.min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/js/bootstrap.min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/js/jquery.cycle.all.js"></script>
-<script src="<?php bloginfo('template_directory'); ?>/js/my.scripts.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/js/superfish.js"></script>
 
 <!--[if IE]>
 			<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_directory'); ?>/css/ie.css" />
@@ -51,12 +50,14 @@
 		<div class="close-menu"><span class="icon-chevron-down"></span>menu</div>
 		<nav id="access" role="navigation" class="span13 h-list">
 		<?php /*  Main Menu  */ ?>
-		<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+		<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container_class' => 'primary-menu', 'menu_class' => 'sf-menu' ) ); ?>
 		
 		</nav><!-- #access -->
 		
+		<?php if ( !is_front_page() ) {
+			wbt_breadcrumb();
+		} ?>
 		
-		<?php wbt_breadcrumb(); ?>
 	</header>
 	
-	<div id="content" class="clearfix">
+	<div id="content">
