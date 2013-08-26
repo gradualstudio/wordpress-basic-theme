@@ -16,7 +16,7 @@ get_header(); ?>
     <?php if ($slide->have_posts()) :  while ($slide->have_posts()) : $slide->the_post();  ?>
         
 		      	        <?php /* Get Featured Image Url */
-						$imageArray = wp_get_attachment_image_src( get_post_thumbnail_id($page->ID), array(270,270) );
+						$imageArray = wp_get_attachment_image_src( get_post_thumbnail_id($page->ID), 'full' );
 						$imageURL = $imageArray[0];
 						?>
 	      <div class="slide s<?php echo $post_number ?>" style="background-image: url(<?php echo $imageURL; ?>">
