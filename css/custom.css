@@ -1,67 +1,151 @@
+
+/* --------------------------------------
+   BASIC CONFIGURATION
+----------------------------------------- */
+
+body{padding: 20px; color: #333;}
+a{text-decoration:none;}
+a:hover{text-decoration:underline;}
+.btn:hover, .btn:hover a{color:#fff; text-decoration: none;}
+
+#logo a{ background:transparent url(../img/my_logo.png) center center no-repeat; display:block; height: 55px; text-indent: -9999px; width:130px;}
+.glyphicon{padding-right: 10px;}
+
+/* MENU */
+.close-menu{ 
+	display:none; 
+	cursor:pointer; 
+	background-color: #eee; 
+	padding:10px 14px; 
+	margin:10px 0 0 0; 
+	color: #666;
+	border-bottom: 1px solid #ccc;
+	/*-------*/
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.sub-menu > li > a{background-color: #eee; border:1px solid #fff; padding: 8px 10px;}
+.sub-menu > li > a:hover{text-decoration:none; color:#fff;}
+
+/* SLIDER */
+#wrapper-slider{position:relative; height: 500px;}
+.slide{
+	height: 500px;
+	width: 100% !important;
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: hidden;
+}
+.slide .content{position:absolute; padding:20px 3% 20px 10%; bottom:50px; color:#000; z-index: 99; background-color: #fff;}
+.slide .content p{margin:5px 0;}
+
+/* BLOG */
+.blog-post{margin:30px 0; border-bottom: 1px solid #eee; padding:10px 0;}
+.blog-post:last-child{border:none;}
+.author-info{padding:20px 2%;}
+.author-avatar{text-align: center; padding-top: 20px;}
+.post-links{padding: 5px 2%;}
+
+/* PROJECTS */
+.project{margin:30px 0;}
+.thumbnail{
+	background-position: center top;
+	background-repeat: no-repeat; 
+	background-size: 100%;
+	height: 160px;
+	overflow: hidden;
+}
+a.thumbnail{border-width: 2px;}
+
+/* FORMS */
+.form input, .form textarea{padding:5px 8px;}
+
+/* COMMENTS */
+.comments-list, .comments-list ul{list-style: none;}
+.comments-list{padding: 0;}
+.comment{margin:20px 0;}
+.comment-content{border:1px solid #ccc; padding:10px 2%; max-width: 70%;}
+.vcard{margin-bottom: 10px;}
+.vcard .avatar{margin-right: 10px;}
+.avatar-39{	
+	-webkit-border-radius: 19px;
+	-moz-border-radius: 19px;
+	border-radius: 19px;
+}
+.avatar-68{	
+	-webkit-border-radius: 34px;
+	-moz-border-radius: 34px;
+	border-radius: 34px;
+}
+.avatar-120{	
+	-webkit-border-radius: 60px;
+	-moz-border-radius: 60px;
+	border-radius: 60px;
+}
+.reply{margin-top: 10px;}
+.comment .children{border-left:6px solid #eee;}
+.comment-form{max-width: 60%;}
+
 /* CUSTOM CSS */
-
-
-/* CUSTOM MEDIA QUERIES */
 
 /*----------------------------------
            LARGE SCREENS
 ------------------------------------*/
 
 @media only screen 
-and (min-width : 1200px) {
-
+and (min-width : 1025px) {
+	.navbar{display:block !important;}
 }
-
 /*----------------------------------
               TABLETS
 ------------------------------------*/
-
+/* Ipad landscape and smaller ----------- */
 @media only screen 
 and (max-width : 1024px) {
 /* Styles */
-
+	.navbar{display:none; background-color: #eee; border: none;}
+	.close-menu{display:block !important;}
+	.navbar li{width:100%;}
+	.sf-menu ul{display: block !important; position: static !important; width:100%;}
+	#logo a{margin: auto;}
+	.navbar a, .sf-menu a, .sub-menu > li > a, .navbar-nav > li > a, .navbar-default .navbar-nav > li > a{
+	border:none; 
+	padding:8px 10px;
+	margin:10px 0;
+	color:#fff;
+	/*-------*/
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	}
+	.navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:hover{
+	color:#fff;
+	}
+	.sf-menu ul{padding-left: 3%;}
+	.sf-menu .menu-item a{background-color: #666; }
+	.sf-menu .sub-menu .menu-item a{background-color: #999; }
 }
-
+/* Ipad portrait and smaller ----------- */
 @media only screen 
 and (max-width : 768px) {
 /* Styles */
-
+	.comment-form{max-width: 100%;}
 }
 
-/* iPads (portrait) ----------- */
-@media only screen 
-and (min-width : 768px)
-and (max-width : 1024px)
-and (orientation : portrait) {
-/* Styles */
-	
-}
-
-/* iPads (landscape) ----------- */
-@media only screen 
-and (min-width : 768px) 
-and (max-width : 1024px) 
-and (orientation : landscape) {
-/* Styles */
-
-}
 /*----------------------------------
                 PHONE
 ------------------------------------*/
 
-/* Samsung Galaxy S3 and smaller----------- */
+/* Samsung Galaxy S3 and smaller ----------- */
 @media only screen 
 and (max-width : 685px) {
 /* Styles */
-
-}
-
-/* Samsung Galaxy S3 (landscape) ----------- */
-@media only screen 
-and (max-width : 685px)
-and (orientation : landscape){
-/* Styles */
-
+	#wrapper-slider, .slider-controls{display:none;}
 }
 
 /* Iphone 5 and smaller ----------- */
@@ -85,7 +169,6 @@ and (max-width : 380px) {
 	
 }
 
-
 /* Iphone 4s and smaller ----------- */
 @media only screen 
 and (max-width : 320px) {
@@ -93,50 +176,10 @@ and (max-width : 320px) {
 	
 }
 
-
-/* Iphone 5 (portrait) ----------- */
-@media only screen 
-and (min-width : 320px) 
-and (max-width : 568px)
-and (orientation : portrait) {
-/* Styles */
-
-}
-/* Iphone 5 (landscape) ----------- */
-@media only screen 
-and (min-width : 320px) 
-and (max-width : 568px)
-and (orientation : landscape) {
-/* Styles */
-
-}
-
-/* Iphone 4s (portrait) ----------- */
-@media only screen 
-and (min-width : 320px) 
-and (max-width : 480px)
-and (orientation : portrait) {
-/* Styles */
-
-}
-
-/* Iphone 4s (landscape) ----------- */
-@media only screen 
-and (min-width : 320px) 
-and (max-width : 480px)
-and (orientation : landscape) {
-/* Styles */
-
-}
-
 /* Retina Display ----------- */
 @media
 only screen and (-webkit-min-device-pixel-ratio : 1.5),
 only screen and (min-device-pixel-ratio : 1.5) {
 /* Styles */
+
 }
-
-
-
-
-

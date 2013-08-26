@@ -1,0 +1,90 @@
+
+/* --------------------------------------
+   CUSTOM LESS
+----------------------------------------- */
+@my_color: #e9003c;
+
+h1, h2, h3, h4, h5{color: @my_color;}
+a{color: @my_color;}
+a:hover{color: @my_color;}
+.btn:hover{background-color: @my_color;}
+.sub-menu > li > a:hover{background-color: @my_color;}
+a.thumbnail:hover{border-color: @my_color;}
+
+
+/*----------------------------------
+           LARGE SCREENS
+------------------------------------*/
+
+@media only screen 
+and (min-width : 1025px) {
+
+}
+
+/*----------------------------------
+              TABLETS
+------------------------------------*/
+/* Ipad landscape and smaller ----------- */
+@media only screen 
+and (max-width : 1024px) {
+/* Styles */
+	.sf-menu .menu-item a:hover, .sf-menu .sub-menu .menu-item a:hover{background-color: @my_color !important;}
+	.current-menu-item > a{background-color: @my_color !important;}
+}
+/* Ipad portrait and smaller ----------- */
+@media only screen 
+and (max-width : 768px) {
+/* Styles */
+
+}
+
+/*----------------------------------
+                PHONE
+------------------------------------*/
+
+/* Samsung Galaxy S3 and smaller ----------- */
+@media only screen 
+and (max-width : 685px) {
+/* Styles */
+
+}
+
+/* Iphone 5 and smaller ----------- */
+@media only screen 
+and (max-width : 568px) {
+/* Styles */
+
+}
+
+/* Iphone 4s and smaller ----------- */
+@media only screen 
+and (max-width : 480px) {
+/* Styles */
+	
+}
+
+/* Samsung Galaxy S3 ----------- */
+@media only screen 
+and (max-width : 380px) {
+/* Styles */
+	
+}
+
+
+/* Iphone 4s and smaller ----------- */
+@media only screen 
+and (max-width : 320px) {
+/* Styles */
+	
+}
+
+
+/* Retina Display ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+}
+
+
+

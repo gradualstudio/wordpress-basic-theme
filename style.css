@@ -3,12 +3,15 @@ Theme Name: Basic Theme
 Theme URI: http://www.atypical-studio.com
 Description: Wordpress Base Theme.
 Version: 1.3
-Author: Atypical Studio / José Carlos Martínez
+Author: Atypical Studio / JosÃ© Carlos MartÃ­nez
 Author URI: http://www.atypical-studio.com
 */
 
+
+/* Style in Custom files */
+
 /* --------------------------------------
-   HELPERS
+   HELPERS & ADDS
 ----------------------------------------- */
 
 /* Fonts */
@@ -17,40 +20,16 @@ Author URI: http://www.atypical-studio.com
 .font-l{ font-size:1.2rem; }
 .font-xl{ font-size:1.6rem; }
 .font-xxl{ font-size:2.3rem; }
-
 .font-normal{font-weight: normal;}
 .font-lighter{font-weight: lighter;}
 .font-bold{font-weight: bold;}
 .font-bolder{font-weight: bolder;}
-
-/* Lists */
-.h-list li{
-	display:inline-block;
-}
-
-/* Margins */
-.no-margin{
-	margin:0;
-}
-.auto-margin{
-	margin:auto;
-}
-
-/* Aligns */
-.alignleft{
-	float:left;
-}
-.alignright{
-	float:right;
-}
-
 /* Box Shadow */
 .box-shadow{
-	-webkit-box-shadow: -1px 0px 8px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:    -1px 0px 8px rgba(50, 50, 50, 0.75);
-	box-shadow:         -1px 0px 8px rgba(50, 50, 50, 0.75);
+	-webkit-box-shadow: 0px 9px 18px rgba(50, 50, 50, 0.55);
+	-moz-box-shadow:    0px 9px 18px rgba(50, 50, 50, 0.55);
+	box-shadow:         0px 9px 18px rgba(50, 50, 50, 0.55);
 }
-
 /* Text Shadow */
 .text-shadow{
 	-webkit-text-shadow: 1px 1px 0px #333;
@@ -58,67 +37,20 @@ Author URI: http://www.atypical-studio.com
 	text-shadow: 1px 1px 0px #333;
 	filter: dropshadow(color=#333, offx=1, offy=1);
 }
-
 /* Border Radius */
 .border-radius{
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
-
 /* Color Test */
-.black{ background-color:#333; }
-.grey{ background-color:#ccc; }
+.black{ background-color:#333; color:#fff;}
+.grey{ background-color:#eee; }
 .red{ background-color:red; }
 .blue{ background-color:blue; }
 .green{ background-color:green; }
-
-/* 16 Columns Grid */
-
-.clear{
-	clear:both;
-}
-
-.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12, .span13, .span14, .span15{
-	float:left;
-}
-
-.span1{width:6.25%;}
-.span2{width:12.5%;}
-.span3{width:18.75%;}
-.span4{width:25%;}
-.span5{width:31.25%;}
-.span6{width:37.5%;}
-.span7{width:43.75%;}
-.span8{width:50%;}
-.span9{width:56.25%;}
-.span10{width:62.5%;}
-.span11{width:68.75%;}
-.span12{width:75%;}
-.span13{width:81.25%;}
-.span14{width:87.5%;}
-.span15{width:93.75%;}
-.span16{width:100%;}
-
-
-.offset1{margin-left:6.25%;}
-.offset2{margin-left:12.5%;}
-.offset3{margin-left:18.75%;}
-.offset4{margin-left:25%;}
-.offset5{margin-left:31.25%;}
-.offset6{margin-left:37.5%;}
-.offset7{margin-left:43.75%;}
-.offset8{margin-left:50%;}
-.offset9{margin-left:56.25%;}
-.offset10{margin-left:62.5%;}
-.offset11{margin-left:68.75%;}
-.offset12{margin-left:75%;}
-.offset13{margin-left:81.25%;}
-.offset14{margin-left:87.5%;}
-.offset15{margin-left:93.75%;}
-
-.gut{padding:5px;} /* Gutter Default: 5px */
-
+.aqua{ background-color:aqua; }
+.coral{ background-color:#e9003c; color:#fff; }
 
 /* Superfish Styles */
 .sf-menu, .sf-menu * {
@@ -127,92 +59,163 @@ Author URI: http://www.atypical-studio.com
 	list-style: none;
 }
 .sf-menu li {
+	display: block;
 	position: relative;
+
 }
 .sf-menu ul {
 	position: absolute;
+	overflow: visible !important;
 	display: none;
 	top: 100%;
 	left: 0;
 	z-index: 99;
+	width: 10em;
 }
 .sf-menu > li {
 	float: left;
 }
 .sf-menu li:hover > ul,
 .sf-menu li.sfHover > ul {
-	display: block;
+
 }
 .sf-menu a {
 	display: block;
 	position: relative;
 }
 .sf-menu ul ul {
-	top: 0;
+	top: 0px;
 	left: 100%;
 }
 
-/* --------------------------------------
-   BASIC CONFIGURATION
------------------------------------------ */
+/* FX */
 
-#wrapper{ margin:auto; max-width: 1200px;}
-a{color:gray; text-decoration:none;}
-a:hover{ color:black; text-decoration:underline;}
-.title{color:gray;}
-#logo a{ background-image: url(img/my_logo.png); display:block; height: 100px; text-indent: -9999px; width:150px;}
-
-/* MENU */
-.primary-menu > ul > li{margin-left: 10px;}
-.primary-menu > ul > li > a{padding:4px 6px;}
-.sub-menu{ width:150%; background-color: #eee;}
-.sub-menu > li{width:100%;}
-.sub-menu > li > a{padding: 4px 6px; border:1px solid #fff;}
-.sub-menu > li > a:hover{text-decoration:none; background-color: #333; color:#fff;}
-.sub-menu .sub-menu{ background-color: #ccc;}
-.current_page_item a{color:black;}
-.close-menu{ display:none; cursor:pointer;}
-
-/* SLIDER */
-#wrapper-slider{position:relative; height: 500px;}
-.slide{
-	height: 500px;
-	width: 100% !important;
-	background-position: center top;
-	background-repeat: no-repeat;
-	background-size: cover;
+/* Color Effect*/
+.fx-color{
+	height: 100%;
+	width: 100%;
+	color:#fff;
+	opacity:0;
+	font-size: 28px;
+	padding: 0;
+	text-align: center;
+	background-color:#000;
+	/**************/
+	-webkit-transform: scale(1.1 , 1.1);
+	-webkit-transform-origin: center center;
+	
+	-moz-transform: scale(1.1 , 1.1);
+	-moz-transform-origin: center center;
+	
+	-o-transform: scale(1.1 , 1.1);
+	-o-transform-origin: center center;
+	
+	transform: scale(1.1 , 1.1);
+	transform-origin: center center;
+	/**************/
+	-webkit-transition-property: all;
+	-webkit-transition-duration: 500ms;
+	-webkit-transition-delay: 0s;
+	-webkit-transition-timing-function: ease ;
+	
+	-moz-transition-property: all;
+	-moz-transition-duration: 500ms;
+	-moz-transition-delay: 0s;
+	-moz-transition-timing-function: ease ;
+	
+	-o-transition-property: all;
+	-o-transition-duration: 500ms;
+	-o-transition-delay: 0s;
+	-o-transition-timing-function: ease ;
+	
+	transition-property: all;
+	transition-duration: 500ms;
+	transition-delay: 0s;
+	transition-timing-function: ease ;
 }
-.content{position:absolute; padding-left:10%; bottom:50px; color:#fff; z-index: 99;}
-
-
-/* --------------------------------------
-   BASIC MEDIA QUERIES
------------------------------------------ */
-
-@media only screen 
-and (min-width : 686px) {
-/* Styles */
-	.primary-menu{display:block !important;}
+.fx:hover .fx-color{
+	opacity: 0.8;
 }
 
-@media only screen 
-and (max-width : 685px) {
-/* Styles */
-	.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12, .span13, .span14, .span15, .span16{
-	float:none;
-	width:100%;
-	}
-	.offset1, .offset2, .offset3, .offset4, .offset5, .offset6, .offset7, .offset8, .offset9, .offset10, .offset11, .offset12, .offset13, .offset14, .offset15{ margin-left:0}
-	.primary-menu, #wrapper-slider, .slider-controls{display:none;}
-	.close-menu{display:block;}
-	.primary-menu li{width:100%;}
-	.primary-menu > ul > li{margin-left: 0;}
-	.sf-menu ul{display: block !important; position: static !important; width:100%;}
-	}
+/* BOX Effect*/
+.fx-box{
+	height: 100%;
+	width: 100%;
+	color:#fff;
+	opacity:0;
+	font-size: 28px;
+	padding: 0;
+	text-align: center;
+	background-color:#000;
+	/**************/
+	-webkit-transform: scale(1.5 , 1.5);
+	-webkit-transform-origin: center center;
+	
+	-moz-transform: scale(1.5 , 1.5);
+	-moz-transform-origin: center center;
+	
+	-o-transform: scale(1.5 , 1.5);
+	-o-transform-origin: center center;
+	
+	transform: scale(1.5 , 1.5);
+	transform-origin: center center;
+	/**************/
+	-webkit-transition-property: all;
+	-webkit-transition-duration: 500ms;
+	-webkit-transition-delay: 0s;
+	-webkit-transition-timing-function: ease ;
+	
+	-moz-transition-property: all;
+	-moz-transition-duration: 500ms;
+	-moz-transition-delay: 0s;
+	-moz-transition-timing-function: ease ;
+	
+	-o-transition-property: all;
+	-o-transition-duration: 500ms;
+	-o-transition-delay: 0s;
+	-o-transition-timing-function: ease ;
+	
+	transition-property: all;
+	transition-duration: 500ms;
+	transition-delay: 0s;
+	transition-timing-function: ease ;
+}
+.fx:hover .fx-box{
+	-webkit-transform: scale(0.9 , 0.9);
+	-moz-transform: scale(0.9 , 0.9);
+	-o-transform: scale(0.9 , 0.9);
+	transform: scale(0.9 , 0.9);
+	/**************/
+	opacity: 0.8;
+}
 
-
-
-
-
-
+/* SCALE Effect*/
+.fx-scale{
+	color:#fff;
+	font-size: 28px;
+	text-align: center;
+	/**************/
+	-webkit-transition-property: all;
+	-webkit-transition-duration: 700ms;
+	-webkit-transition-delay: 0s;
+	-webkit-transition-timing-function: ease-in-out ;
+	
+	-moz-transition-property: all;
+	-moz-transition-duration: 700ms;
+	-moz-transition-delay: 0s;
+	-moz-transition-timing-function: ease-in-out ;
+	
+	-o-transition-property: all;
+	-o-transition-duration: 700ms;
+	-o-transition-delay: 0s;
+	-o-transition-timing-function: ease-in-out ;
+	
+	transition-property: all;
+	transition-duration: 700ms;
+	transition-delay: 0s;
+	transition-timing-function: ease-in-out ;
+}
+.fx-scale:hover{
+	background-size: 150% auto;
+}
 

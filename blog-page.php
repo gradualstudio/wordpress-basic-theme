@@ -6,7 +6,7 @@
  */
 
 get_header(); ?>
-<section class="span12">
+<section class="col-sm-9 col-lg-9">
 
 			<h1><?php the_title(); ?></h1>
 
@@ -19,9 +19,8 @@ query_posts( array( 'post_type' => 'post', 'order' => 'DESC','posts_per_page' =>
 <?php while ( have_posts() ) : the_post(); ?>
 	
 				
-	      <article class="articulo clearfix">
-	            
-	            
+	      <article class="blog-post row">
+
 	            <?php 	/* Get Featured Image Url */
 						// $imageArray = wp_get_attachment_image_src( get_post_thumbnail_id($page->ID), array(270,210) );
 						// $imageURL = $imageArray[0]; //php echo $imageURL
@@ -42,7 +41,7 @@ query_posts( array( 'post_type' => 'post', 'order' => 'DESC','posts_per_page' =>
 	              <p><?php  the_excerpt();/* Resumen de Contenido*/ ?></p>
 	              
 	            </div>
-	            <div class="more alignright"><a class="border-radius" href="<?php the_permalink(); ?>" title="<?php _e("Read More", ""); ?>"><?php _e("Read More", ""); ?></a></div>
+	            <a class="btn btn-default" href="<?php the_permalink(); ?>" title="<?php _e("Read More", ""); ?>"><?php _e("Read More", ""); ?></a>
 	       </article>
 				
 	
@@ -64,7 +63,7 @@ query_posts( array( 'post_type' => 'post', 'order' => 'DESC','posts_per_page' =>
 	 <?php endif; // End Loop. ?>
 						
 
-</section><!-- #section -->
+</section>
 		
 	<?php get_sidebar(); ?>
 	<?php get_footer(); ?>

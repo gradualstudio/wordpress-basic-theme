@@ -5,7 +5,7 @@
  */
 
 get_header(); ?>
-<section class="col-sm-9 col-lg-9">
+<section class="col-sm-12 col-lg-12">
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 					
@@ -19,7 +19,6 @@ get_header(); ?>
 					</div>
 					
 					<p><?php wp_link_pages( array( 'before' => '' . __( 'Pages:', 'wbt' ), 'after' => '' ) ); ?></p>
-					<p><span class="glyphicon glyphicon-tags"></span><?php the_tags('',' | '); ?></p>
 					
 					<?php if ( get_the_author_meta( 'description' ) ) : // Show a bio on their entries  ?>				
 						<footer class="author-info grey border-radius">
@@ -53,5 +52,4 @@ get_header(); ?>
 
 <?php endwhile; // end of the loop. ?>
 </section>
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

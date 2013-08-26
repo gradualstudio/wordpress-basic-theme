@@ -5,10 +5,10 @@
  */
 
 get_header(); ?>
-<section class="span12">
+<section class="col-sm-9 col-lg-9">
 
 				<h1><?php
-					printf( __( 'Category Archives: %s', 'twentyten' ), '' . single_cat_title( '', false ) . '' );
+					printf( __( 'Category Archives: %s', 'wbt' ), '' . single_cat_title( '', false ) . '' );
 				?></h1>
 				<?php
 					$category_description = category_description();

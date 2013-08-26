@@ -5,10 +5,10 @@
  */
 
 get_header(); ?>
-<section class="span12">
+<section class="col-sm-9 col-lg-9">
 
 				<h1><?php
-					printf( __( 'Tag Archives: %s', 'twentyten' ), '' . single_tag_title( '', false ) . '' );
+					printf( __( 'Tag Archives: %s', 'wbt' ), '' . single_tag_title( '', false ) . '' );
 				?></h1>
 
 <?php

@@ -3,7 +3,7 @@
  * This template will be used to display page content.
  */
 get_header(); ?>
-<section class="span12">
+<section class="col-sm-9 col-lg-9">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 

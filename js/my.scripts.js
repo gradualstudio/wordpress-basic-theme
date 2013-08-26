@@ -5,10 +5,8 @@ $(document).ready(function(){
 	var $window = $(window);
 	var $windowWidth = $window.width();
    
-   
-   
    // Superfish https://github.com/joeldbirch/superfish
-   if (($windowWidth) > 685){
+   if (($windowWidth) > 1024){
    
    jQuery('ul.sf-menu').superfish({
 			delay:       500,                            // one second delay on mouseout
@@ -18,8 +16,6 @@ $(document).ready(function(){
 		});
 	}
 		
-		
-
 	// Slider Home - Jquery Cycle / http://jquery.malsup.com/cycle/
 
     $('#slider-home').cycle({ 
@@ -45,27 +41,21 @@ $(document).ready(function(){
     }
     
     function showContent() { 
-	    $('#slider-home .content')
-	    .animate({
-		    opacity: 1,
+	    $('#slider-home .content').animate({
+		    opacity: 0.9,
 		    bottom: '+=110'
-		    }, 500, function() {
-			  
-		});
+		    }, 500, function() {});
     }
-   
-   
+    
+    var $menu = $('.navbar');
    // Responsive Switch
    $('.close-menu').click(function() {
-	    $('.primary-menu').slideToggle('fast');
-	    $(this).find('span').toggleClass('icon-chevron-down').toggleClass('icon-chevron-up');
+   		$menu.slideToggle('fast');
 	});
-   
    
    // Custom Javascript
    
-   
-});//
+});
 
 
 

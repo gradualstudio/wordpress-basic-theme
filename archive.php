@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<section class="span12">
+<section class="col-sm-9 col-lg-9">
 
 <?php
 	/* Queue the first post, that way we know

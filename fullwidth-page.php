@@ -5,7 +5,7 @@
  * A custom page template without sidebar.
 **/
 get_header(); ?>
-<section class="clear">
+<section class="col-sm-12 col-lg-12">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 					

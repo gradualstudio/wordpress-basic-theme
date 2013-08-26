@@ -3,8 +3,6 @@
  * Functions.
  */
  
- 
-
  add_action( 'after_setup_theme', 'wbt_setup' );
 function wbt_setup() {
 
@@ -14,12 +12,18 @@ function wbt_setup() {
 		// This theme uses wp_nav_menu() in one location.
 	register_nav_menu( 'primary', __( 'Primary Menu', 'wbt' ) );
 
-	
 		// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
 	
 		// This theme uses Featured Images (also known as post thumbnails) for per-post/per-page Custom Header images
 	add_theme_support( 'post-thumbnails' );
+	
+		// Add excerpt support
+	add_post_type_support( 'page', 'excerpt' );
+	
+		// Remove auto html
+	remove_filter( 'the_excerpt', 'wpautop' );
+	remove_filter( 'the_content', 'wpautop' );
 }
 
 function wbt_filter_wp_title( $title, $separator ) {
@@ -117,8 +121,8 @@ function wbt_widgets_init() {
 		'name' => __( 'Widget Area', 'wbt' ),
 		'id' => 'widget-area',
 		'description' => __( 'My first widget area', 'wbt' ),
-		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</aside>',
+		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
@@ -155,8 +159,8 @@ function wbt_comment( $comment, $args, $depth ) {
 	?>
 	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 		<article id="comment-<?php comment_ID(); ?>" class="comment">
-			<footer class="comment-meta">
-				<div class="comment-author vcardo">
+			<header class="comment-meta">
+				<div class="comment-author vcard">
 					<?php
 						$avatar_size = 68;
 						if ( '0' != $comment->comment_parent )
@@ -165,8 +169,8 @@ function wbt_comment( $comment, $args, $depth ) {
 						echo get_avatar( $comment, $avatar_size );
 
 						/* translators: 1: comment author, 2: date and time */
-						printf( __( '%1$s on %2$s <span class="says">said:</span>', 'wbt' ),
-							sprintf( '<span class="fn">%s</span>', get_comment_author_link() ),
+						printf( __( '%1$s on %2$s', 'wbt' ),
+							sprintf( '%s', get_comment_author_link() ),
 							sprintf( '<a href="%1$s"><time pubdate datetime="%2$s">%3$s</time></a>',
 								esc_url( get_comment_link( $comment->comment_ID ) ),
 								get_comment_time( 'c' ),
@@ -184,12 +188,12 @@ function wbt_comment( $comment, $args, $depth ) {
 					<br />
 				<?php endif; ?>
 
-			</footer>
+			</header>
 
-			<div class="comment-content"><?php comment_text(); ?></div>
+			<div class="comment-content border-radius"><?php comment_text(); ?></div>
 
-			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply <span>&darr;</span>', 'wbt' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+			<div class="reply btn btn-default">
+				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'wbt' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 			</div><!-- .reply -->
 		</article><!-- #comment-## -->
 
@@ -211,7 +215,7 @@ function wbt_posted_on() {
 		esc_attr( get_the_date( 'c' ) ),
 		esc_html( get_the_date() ),
 		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-		esc_attr( sprintf( __( 'View all posts by %s', 'twentyeleven' ), get_the_author() ) ),
+		esc_attr( sprintf( __( 'View all posts by %s', 'wbt' ), get_the_author() ) ),
 		get_the_author()
 	);
 }
@@ -237,7 +241,7 @@ function wbt_content_nav( $html_id ) {
 
 	if ( $wp_query->max_num_pages > 1 ) : ?>
 		<nav id="<?php echo $html_id; ?>" class="navigation" role="navigation">
-			<h3 class="assistive-text"><?php _e( 'Post navigation', 'twentytwelve' ); ?></h3>
+			<h3 class="assistive-text"><?php _e( 'Post navigation', 'wbt' ); ?></h3>
 			<div class="nav-previous alignleft"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'twentytwelve' ) ); ?></div>
 			<div class="nav-next alignright"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?></div>
 		</nav><!-- #<?php echo $html_id; ?> .navigation -->
@@ -249,13 +253,187 @@ function wbt_content_nav( $html_id ) {
  */
 
 function wbt_breadcrumb() {
-	
-        echo '<ul class="breadcrumb clearfix clear"><li><a href="'; 
-        bloginfo('url');
+
+	global $post; 
+
+        echo '<ul class="breadcrumb row">';
+        echo '<li><a href="';
+        echo get_option('home');
         echo '">';
-        bloginfo('name');
-        echo '</a><span class="divider">/</span></li><li class="active"> ';
-        the_title();
-        echo '</li></ul>';
+        echo 'Home';
+        echo "</a></li>";
         
-}    
+        if (is_single()) {
+        		if ('project' == get_post_type()){
+        		$id_template = get_page_ID_by_page_template('projects-page.php');
+        		
+            		echo '<li class="project"><a href="';
+            		echo get_permalink($id_template);
+            		echo '" title="';
+            		echo get_the_title($id_template);
+            		echo '">';
+            		echo get_the_title($id_template);
+            		echo '</a></li>';
+            	}
+            	if ('post' == get_post_type()){
+        		$id_template = get_page_ID_by_page_template('blog-page.php');
+        		
+            		echo '<li class="blog"><a href="';
+            		echo get_permalink($id_template);
+            		echo '" title="';
+            		echo get_the_title($id_template);
+            		echo '">';
+            		echo get_the_title($id_template);
+            		echo '</a></li>';
+            	}
+
+            	if (is_category()){
+	        		echo '<li class="category">';
+	        		echo the_category('', '', '');
+	        		echo the_terms( $post->ID, 'project_category', '', '' );
+	        		echo '</li>';
+	        	}
+	        	
+	        echo '<li>';
+            echo the_title();
+            echo '</li>';
+                
+        } elseif (is_page()) {
+        	$parents = get_post_ancestors($post->ID);
+	        $id_parent = ($parents) ? $parents[count($parents)-1]: $post->ID;
+	        
+        	if ($id_parent !== $post->ID){
+	        	echo '<li><a href=' . get_permalink($id_parent) . ' ' . 'title=' . get_the_title($id_parent) . '>' . get_the_title($id_parent) . '</a></li>';
+	        	
+	        	$parent_title = get_the_title($post->post_parent);
+	        	if ($id_parent !== $post->post_parent) {
+					echo '<li><a href=' . get_permalink($post->post_parent) .
+					 ' ' . 'title=' . $parent_title . '>' . $parent_title . '</a></li>';
+				} 
+        	}
+        	
+            echo '<li>';
+            echo the_title();
+            echo '</li>';
+            
+        } 	elseif (is_tag()) {echo '<li>'; single_tag_title(); echo '</li>';}
+		    elseif (is_day()) {echo"<li>Archive for "; the_time('F jS, Y'); echo'</li>';}
+		    elseif (is_month()) {echo"<li>Archive for "; the_time('F, Y'); echo'</li>';}
+		    elseif (is_year()) {echo"<li>Archive for "; the_time('Y'); echo'</li>';}
+		    elseif (is_author()) {echo"<li>Author Archive"; echo'</li>';}
+		    elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {echo "<li>Blog Archives"; echo'</li>';}
+		    elseif (is_search()) {echo"<li>Search Results"; echo'</li>';}
+		    echo '</ul>';
+}
+/*
+ * Get template links.
+ */
+
+/*-- Get page ID by Page Template --*/
+function get_page_ID_by_page_template($template_name)
+{
+    global $wpdb;
+    $page_ID = $wpdb->get_var("SELECT post_id FROM $wpdb->postmeta WHERE meta_value = '$template_name' AND meta_key = '_wp_page_template'");
+    return $page_ID;
+}
+
+/*
+ * Custom Post Type: Project.
+ */
+
+function custom_post_project() {
+	$labels = array(
+		'name'               => _x( 'Project', 'post type general name' ),
+		'singular_name'      => _x( 'Project', 'post type singular name' ),
+		'add_new'            => _x( 'Add New', 'book' ),
+		'add_new_item'       => __( 'Add New Project' ),
+		'edit_item'          => __( 'Edit Project' ),
+		'new_item'           => __( 'New Project' ),
+		'all_items'          => __( 'All Projects' ),
+		'view_item'          => __( 'View Project' ),
+		'search_items'       => __( 'Search Projects' ),
+		'not_found'          => __( 'Not found' ),
+		'not_found_in_trash' => __( 'Not found in the Trash' ), 
+		'parent_item_colon'  => '',
+		'menu_name'          => 'Projects'
+	);
+	$args = array(
+		'labels'        => $labels,
+		'description'   => 'Add your projects or services',
+		'public'        => true,
+		'menu_position' => 5,
+		'rewrite' => array('slug'=>'project'),
+		'menu_icon' 	=> 'https://cdn2.iconfinder.com/data/icons/linecons/32/note-16.png',
+		'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+		'taxonomies' => array('project_category'),
+		'has_archive'   => true,
+	);
+	register_post_type( 'project', $args );	
+	
+	register_taxonomy_for_object_type('project_category','project');
+}
+add_action( 'init', 'custom_post_project' );
+
+
+
+// Custom Taxonomies for custom_post_project
+function projects_taxonomies() {
+	$labels = array(
+		'name'              => _x( 'Project Categories', 'taxonomy general name' ),
+		'singular_name'     => _x( 'Project Category', 'taxonomy singular name' ),
+		'search_items'      => __( 'Search Project Categories' ),
+		'all_items'         => __( 'All Project Categories' ),
+		'parent_item'       => __( 'Parent Project Category' ),
+		'parent_item_colon' => __( 'Parent Project Category:' ),
+		'edit_item'         => __( 'Edit Project Category' ), 
+		'update_item'       => __( 'Update Project Category' ),
+		'add_new_item'      => __( 'Add New Project Category' ),
+		'new_item_name'     => __( 'New Project Category' ),
+		'menu_name'         => __( 'Categories' )
+	);
+	$args = array(
+		'labels' => $labels,
+		'hierarchical' => true,
+	);
+	register_taxonomy( 'project_category', 'project', $args );
+}
+add_action( 'init', 'projects_taxonomies', 0 );
+
+
+/*
+ * Custom Post Type: Slide.
+ */
+
+function custom_post_slide() {
+	$labels = array(
+		'name'               => _x( 'Slide', 'post type general name' ),
+		'singular_name'      => _x( 'Slide', 'post type singular name' ),
+		'add_new'            => _x( 'Add New', 'book' ),
+		'add_new_item'       => __( 'Add New Slide' ),
+		'edit_item'          => __( 'Edit Slide' ),
+		'new_item'           => __( 'New Slide' ),
+		'all_items'          => __( 'All Slides' ),
+		'view_item'          => __( 'View Slide' ),
+		'search_items'       => __( 'Search Slides' ),
+		'not_found'          => __( 'Not found' ),
+		'not_found_in_trash' => __( 'Not found in the Trash' ), 
+		'parent_item_colon'  => '',
+		'menu_name'          => 'Slides'
+	);
+	$args = array(
+		'labels'        => $labels,
+		'description'   => 'Add your slides',
+		'public'        => true,
+		'menu_position' => 5,
+		'rewrite' => array('slug'=>'slide'),
+		'menu_icon' 	=> 'https://cdn2.iconfinder.com/data/icons/linecons/32/note-16.png',
+		'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+		'has_archive'   => false,
+	);
+	register_post_type( 'slide', $args );	
+	
+}
+add_action( 'init', 'custom_post_slide' );
+
+
+?>
