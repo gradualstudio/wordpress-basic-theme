@@ -22,7 +22,7 @@ get_header(); ?>
 					<p><span class="glyphicon glyphicon-tags"></span><?php the_tags('',' | '); ?></p>
 					
 					<?php if ( get_the_author_meta( 'description' ) ) : // Show a bio on their entries  ?>				
-						<footer class="author-info grey border-radius">
+						<footer class="author-info">
 						
 							<div class="author-avatar col-lg-3">
 							<?php

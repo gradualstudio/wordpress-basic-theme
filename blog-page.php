@@ -19,7 +19,7 @@ query_posts( array( 'post_type' => 'post', 'order' => 'DESC','posts_per_page' =>
 <?php while ( have_posts() ) : the_post(); ?>
 	
 				
-	      <article class="blog-post row">
+	      <article class="blog-post">
 
 	            <?php 	/* Get Featured Image Url */
 						// $imageArray = wp_get_attachment_image_src( get_post_thumbnail_id($page->ID), array(270,210) );

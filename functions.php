@@ -190,7 +190,7 @@ function wbt_comment( $comment, $args, $depth ) {
 
 			</header>
 
-			<div class="comment-content border-radius"><?php comment_text(); ?></div>
+			<div class="comment-content"><?php comment_text(); ?></div>
 
 			<div class="reply btn btn-default">
 				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'wbt' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
@@ -256,7 +256,7 @@ function wbt_breadcrumb() {
 
 	global $post; 
 
-        echo '<ul class="breadcrumb row">';
+        echo '<ul class="breadcrumb">';
         echo '<li><a href="';
         echo get_option('home');
         echo '">';
@@ -267,7 +267,7 @@ function wbt_breadcrumb() {
         		if ('project' == get_post_type()){
         		$id_template = get_page_ID_by_page_template('projects-page.php');
         		
-            		echo '<li class="project"><a href="';
+            		echo '<li><a href="';
             		echo get_permalink($id_template);
             		echo '" title="';
             		echo get_the_title($id_template);
@@ -278,7 +278,7 @@ function wbt_breadcrumb() {
             	if ('post' == get_post_type()){
         		$id_template = get_page_ID_by_page_template('blog-page.php');
         		
-            		echo '<li class="blog"><a href="';
+            		echo '<li><a href="';
             		echo get_permalink($id_template);
             		echo '" title="';
             		echo get_the_title($id_template);
@@ -288,7 +288,7 @@ function wbt_breadcrumb() {
             	}
 
             	if (is_category()){
-	        		echo '<li class="category">';
+	        		echo '<li>';
 	        		echo the_category('', '', '');
 	        		echo the_terms( $post->ID, 'project_category', '', '' );
 	        		echo '</li>';
@@ -326,10 +326,8 @@ function wbt_breadcrumb() {
 		    echo '</ul>';
 }
 /*
- * Get template links.
+ * Get page ID by Page Template.
  */
-
-/*-- Get page ID by Page Template --*/
 function get_page_ID_by_page_template($template_name)
 {
     global $wpdb;
@@ -338,14 +336,13 @@ function get_page_ID_by_page_template($template_name)
 }
 
 /*
- * Custom Post Type: Project.
+ * Custom Post Type: Projects.
  */
-
 function custom_post_project() {
 	$labels = array(
 		'name'               => _x( 'Project', 'post type general name' ),
 		'singular_name'      => _x( 'Project', 'post type singular name' ),
-		'add_new'            => _x( 'Add New', 'book' ),
+		'add_new'            => _x( 'Add New', 'project' ),
 		'add_new_item'       => __( 'Add New Project' ),
 		'edit_item'          => __( 'Edit Project' ),
 		'new_item'           => __( 'New Project' ),
@@ -358,19 +355,21 @@ function custom_post_project() {
 		'menu_name'          => 'Projects'
 	);
 	$args = array(
-		'labels'        => $labels,
-		'description'   => 'Add your projects or services',
-		'public'        => true,
-		'menu_position' => 5,
-		'rewrite' => array('slug'=>'project'),
-		'menu_icon' 	=> 'https://cdn2.iconfinder.com/data/icons/linecons/32/note-16.png',
-		'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
-		'taxonomies' => array('project_category'),
-		'has_archive'   => true,
+		'labels'        	=> $labels,
+		'description'   	=> 'Add your projects or services',
+		'public'        	=> true,
+		'menu_position' 	=> 5,
+		'hierarchical'      => false,
+		'rewrite' 			=> array('slug'=>'project'),
+		'capability_type'   => 'post',
+		'taxonomies' 		=> array('project-category'),
+		'has_archive'   	=> true,
+		'menu_icon' 		=> 'https://cdn2.iconfinder.com/data/icons/linecons/32/note-16.png',
+		'supports'      	=> array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' )
 	);
-	register_post_type( 'project', $args );	
+	register_post_type( 'projects', $args );	
 	
-	register_taxonomy_for_object_type('project_category','project');
+	register_taxonomy_for_object_type('project-category','projects');
 }
 add_action( 'init', 'custom_post_project' );
 
@@ -395,13 +394,12 @@ function projects_taxonomies() {
 		'labels' => $labels,
 		'hierarchical' => true,
 	);
-	register_taxonomy( 'project_category', 'project', $args );
+	register_taxonomy( 'project-category', 'projects', $args );
 }
 add_action( 'init', 'projects_taxonomies', 0 );
 
-
 /*
- * Custom Post Type: Slide.
+ * Custom Post Type: Slides.
  */
 
 function custom_post_slide() {
@@ -421,17 +419,18 @@ function custom_post_slide() {
 		'menu_name'          => 'Slides'
 	);
 	$args = array(
-		'labels'        => $labels,
-		'description'   => 'Add your slides',
-		'public'        => true,
-		'menu_position' => 5,
-		'rewrite' => array('slug'=>'slide'),
-		'menu_icon' 	=> 'https://cdn2.iconfinder.com/data/icons/linecons/32/note-16.png',
-		'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
-		'has_archive'   => false,
+		'labels'        	=> $labels,
+		'description'   	=> 'Add your slides',
+		'public'        	=> true,
+		'menu_position' 	=> 5,
+		'hierarchical'      => false,
+		'rewrite' 			=> array('slug'=>'slide'),
+		'capability_type'   => 'post',
+		'has_archive'   	=> false,
+		'menu_icon' 		=> 'https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/photo-16.png',
+		'supports'      	=> array( 'title', 'editor', 'thumbnail', 'excerpt' )
 	);
-	register_post_type( 'slide', $args );	
-	
+	register_post_type( 'slides', $args );	
 }
 add_action( 'init', 'custom_post_slide' );
 

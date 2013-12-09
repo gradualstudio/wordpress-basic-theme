@@ -21,7 +21,7 @@ get_header(); ?>
 					<p><?php wp_link_pages( array( 'before' => '' . __( 'Pages:', 'wbt' ), 'after' => '' ) ); ?></p>
 					
 					<?php if ( get_the_author_meta( 'description' ) ) : // Show a bio on their entries  ?>				
-						<footer class="author-info grey border-radius">
+						<footer class="author-info">
 						
 							<div class="author-avatar col-lg-3">
 							<?php

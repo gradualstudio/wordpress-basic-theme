@@ -6,7 +6,7 @@
 	echo '</div> <!-- .main -->';
 	} ?>
 	<footer class="row">
-		<small><p><?php bloginfo( 'name' ); ?> | Wordpress Basic Theme by Atypical Studio | <a href="http://www.atypical-studio.com" target="_blank">www.atypical-studio.com</a></p></small>
+		<p class="col-lg-12"><small><?php bloginfo( 'name' ); ?> | Wordpress Basic Theme by José Carlos Martínez | <a href="http://www.gradualstudio.com" target="_blank">www.gradualstudio.com</a></small></p>
 	</footer>
 
 		<?php wp_footer(); ?>

@@ -6,7 +6,7 @@ $(document).ready(function(){
 	var $windowWidth = $window.width();
    
    // Superfish https://github.com/joeldbirch/superfish
-   if (($windowWidth) > 1024){
+   if (($windowWidth) > 768){
    
    jQuery('ul.sf-menu').superfish({
 			delay:       500,                            // one second delay on mouseout
@@ -24,7 +24,6 @@ $(document).ready(function(){
     pager:		'.controlNav',
     next:		'.next',
     prev:		'.prev',
-    width:      '100%',
     height:     'auto',
     fit:		1, // default: 0 - force slides to fit container
     containerResize: 0, // default: 1 - resize container to fit largest slide 
@@ -47,8 +46,9 @@ $(document).ready(function(){
 		    }, 500, function() {});
     }
     
-    var $menu = $('.navbar');
    // Responsive Switch
+   
+   var $menu = $('.navbar');
    $('.close-menu').click(function() {
    		$menu.slideToggle('fast');
 	});

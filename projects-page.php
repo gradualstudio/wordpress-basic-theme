@@ -5,17 +5,17 @@
 **/
 
 get_header(); ?>
-<section class="row">
+<section class="col-lg-12">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 					
-				<h1 class="col-lg-12"><?php the_title(); ?></h1>
+				<h1><?php the_title(); ?></h1>
 				<?php the_content(); ?>
 <?php endwhile; ?>
 
 </section>
-<section class="row">
-    <?php $project = new WP_Query( array ( 'post_type' => 'project', 'orderby' => 'menu_order', 'order' => 'ASC'));  ?>
+<section class="col-lg-12 clearfix">
+    <?php $project = new WP_Query( array ( 'post_type' => 'projects', 'orderby' => 'menu_order', 'order' => 'ASC'));  ?>
     <?php if ($project->have_posts()) :  while ($project->have_posts()) : $project->the_post();  ?>
         
 
@@ -26,7 +26,7 @@ get_header(); ?>
 	      <article class="project col-xs-12 col-sm-6 col-lg-4">
 	      		
 	      		<?php if ( has_post_thumbnail() ) { ?>
-		      		<a class="thumbnail fx-scale" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" style="background-image: url(<?php echo $imageURL; ?>)">
+		      		<a class="thumbnail" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" style="background-image: url(<?php echo $imageURL; ?>)">
 			      			<?php //the_post_thumbnail(array(300,300)); ?>
 			      	</a>
 		      	<?php } ?> 

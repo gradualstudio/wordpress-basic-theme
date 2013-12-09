@@ -18,12 +18,9 @@ get_header(); ?>
 <?php else : ?>
 					<h2><?php _e( 'Nothing Found', 'wbt' ); ?></h2>
 					<p><?php _e( 'Please try again with some different keywords.', 'wbt' ); ?></p>
-					<form role="search" method="get" action="<?php echo home_url( '/' ); ?>">
-						<div class="form-group">
-							<input id="s" type="text" value="" name="s" class="form-control" placeholder="Search">
-						</div>
-						<button id="searchsubmit" type="submit" value="Search" class="submit btn btn-default">Submit</button>
-					</form>
+					<p>
+						<?php get_search_form(); ?>
+					</p>
 <?php endif; ?>
 </section>
 <?php get_sidebar(); ?>

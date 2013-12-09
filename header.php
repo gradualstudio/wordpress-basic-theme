@@ -4,7 +4,7 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<meta name="author" content="Atypical Studio" />
+<meta name="author" content="Gradual Studio" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,17 +14,13 @@
 
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/extra/bootstrap.min.css" />
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/extra/normalize.css" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/custom.css" />
-<link rel="stylesheet/less" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/custom.less" />
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/js/extra/jquery-1.8.3.min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/js/extra/bootstrap.min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/js/extra/jquery.cycle.all.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/js/extra/superfish.js"></script>
-<script src="<?php bloginfo('template_directory'); ?>/js/extra/less-1.4.1.min.js"></script>
 
 <!--[if IE]>
 			<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_directory'); ?>/css/ie.css" />
@@ -38,37 +34,38 @@
 		wp_enqueue_script( 'comment-reply' );
 		wp_head();
 ?>
-
 </head>
 
 <body <?php body_class(); ?>>
-
     <div class="container">
-    
     <header class="row">
     
     	<div id="logo" class="col-lg-2">
 			<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 		</div>
 		
-		<div class="close-menu"><span class="glyphicon glyphicon-th-list"></span><?php _e('Main Menu', 'wbt'); ?></div>
 		
-		<nav class="col-lg-10 navbar navbar-default" role="navigation">
-		<?php /*  Main Menu  */ ?>
-		<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'menu_class' => 'sf-menu nav navbar-nav' ) ); ?>
-		
-		<form class="navbar-form navbar-right" role="search" method="get" action="<?php echo home_url( '/' ); ?>">
-		      <div class="form-group">
-		        <input id="s" type="text" value="" name="s" class="form-control" placeholder="Search">
-		      </div>
-		      <button id="searchsubmit" type="submit" value="Search" class="submit btn btn-default">Submit</button>
-	    </form>
-
-		</nav><!-- .navbar -->
+		<div class="col-md-12 col-lg-10">
+			<div class="close-menu"><span class="glyphicon glyphicon-th-list"></span><?php _e('Main Menu', 'wbt'); ?></div>
+				<nav class="navbar navbar-inverse" role="navigation">
+					<?php /*  Main Menu  */ ?>
+					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'menu_class' => 'sf-menu nav navbar-nav' ) ); ?>
+					<form class="navbar-form navbar-right" role="search" method="get" action="<?php echo home_url( '/' ); ?>">
+					      <div class="form-group">
+					        <input id="s" type="text" value="" name="s" class="form-control" placeholder="Search">
+					      </div>
+					      <button id="searchsubmit" type="submit" value="Search" class="submit btn btn-default">Submit</button>
+				    </form>
+				</nav><!-- .navbar -->
+		</div>
 	</header>
 	
 		<?php if ( !is_front_page() ) {
+			echo '<div class="row">';
+			echo '<div class="col-lg-12">';
 			wbt_breadcrumb();
+			echo '</div>';
+			echo '</div>';
 			echo '<div class="row main">';
 		} ?>
 	

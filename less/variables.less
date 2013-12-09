@@ -1,0 +1,85 @@
+/* --------------------------------------
+   VARIABLES
+----------------------------------------- */
+
+
+/* Theme Colors */
+@color1: #41c0fb;
+@color2: darken(@color1, 20%);
+@color3: darken(@color1, 30%);
+@color4: darken(@color1, 50%);
+
+/* Fonts */
+.font-s{ font-size:0.85em;}
+.font-m{ font-size:1em;}
+.font-l{ font-size:1.2em;}
+.font-xl{ font-size:1.6em;}
+.font-xxl{ font-size:2.3em;}
+.font-normal{font-weight: normal;}
+.font-lighter{font-weight: lighter;}
+.font-bold{font-weight: bold;}
+.font-bolder{font-weight: bolder;}
+
+/* Box Shadow */
+.box-shadow(@args: 7px 7px 5px rgba(50, 50, 50, 0.75)) {
+  -webkit-box-shadow: @args;
+  -moz-box-shadow: @args;
+  box-shadow: @args;
+}
+/* Text Shadow */
+.text-shadow(@args: 7px 7px 5px rgba(50, 50, 50, 0.75)) {
+  -webkit-text-shadow: @args;
+  -moz-text-shadow: @args;
+  text-shadow: @args;
+}
+/* Border Radius */
+.rounded(@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+.border-radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+  -webkit-border-top-right-radius: @topright;
+  -webkit-border-bottom-right-radius: @bottomright;
+  -webkit-border-bottom-left-radius: @bottomleft;
+  -webkit-border-top-left-radius: @topleft;
+  -moz-border-radius-topright: @topright;
+  -moz-border-radius-bottomright: @bottomright;
+  -moz-border-radius-bottomleft: @bottomleft;
+  -moz-border-radius-topleft: @topleft;
+  border-top-right-radius: @topright;
+  border-bottom-right-radius: @bottomright;
+  border-bottom-left-radius: @bottomleft;
+  border-top-left-radius: @topleft;
+}
+/* Opacity */
+.opacity(@opacity: 0.5) {
+  -moz-opacity: @opacity;
+  -khtml-opacity: @opacity;
+  -webkit-opacity: @opacity;
+  opacity: @opacity;
+}
+/* Transform */
+.transform(@function , @value) {
+  -webkit-transform: @function (@value);
+  -moz-transform: @function (@value);
+  -o-transform: @function (@value);
+  -ms-transform: @function (@value);
+  transform: @function (@value);
+}
+.transform-origin(@args) {
+  -webkit-transform-origin: @args;
+  -moz-transform-origin: @args;
+  -o-transform-origin: @args;
+  -ms-transform-origin: @args;
+  transform-origin: @args;
+}
+/* Transition */
+.transition(@property: all, @duration: 500ms, @ease: ease-out) {
+  -webkit-transition: @property @duration @ease;
+  -moz-transition: @property @duration @ease;
+  -o-transition: @property @duration @ease;
+  transition: @property @duration @ease;
+}
+
+
